@@ -1,0 +1,78 @@
+{
+	"dark" : {
+		"general" : {
+			"normal" : {
+				"background" : "#2e3d47",
+				"foreground" : "#fafafa",
+				"font" : ["Verdana", 9],
+				"relief" : "flat",
+				"insertbackground" : "#fafafa"
+			},
+			"contrast" : {
+				"background" : "#0d69a5",
+				"foreground" : "#fafafa",
+				"font" : ["Verdana", 9],
+				"relief" : "flat",
+				"activebackground" : "#0a629b",
+				"activeforeground" : "#fafafa",
+				"bd" : 0
+			},
+			"contrast2" : {
+				"background" : "#26323a",
+				"foreground" : "#fafafa",
+				"font" : ["Verdana", 9],
+				"relief" : "flat",
+				"activebackground" : "#0a629b",
+				"activeforeground" : "#fafafa",
+				"bd" : 0
+			}
+		},
+		"single_line_syntax" : {
+			"Python2" : {
+				"#1ADDB6" : ["\\bself\\b","\\bcontinue\\b", "\\bfor\\b", "\\blambda\\b", "\\btry\\b", "\\bclass\\b", "\\bfinally\\b", "\\bis\\b", "\\breturn\\b", "\\bwhile\\b", "\\bdef\\b", "\\bfrom\\b", "\\band\\b", "\\bdel\\b", "\\bglobal\\b", "\\bnot\\b", "\\bwith\\b", "\\bas\\b", "\\belif\\b", "\\bif\\b", "\\bor\\b", "\\byield\\b", "\\bassert\\b", "\\belse\\b", "\\bimport\\b","\\bpass\\b","\\bbreak\\b","\\bexcept\\b","\\bin\\b","\\braise\\b", "\\bprint\\b", "\\bpexec\\b"],
+				"#519B9C" : ["\\bTrue\\b", "\\bFalse\\b", "\\bNone\\b", "\\bint\\b", "\\bstr\\b", "\\b(\\d)*\\b"],
+				"#DE365A" : ["'.{0,}'","\".{0,}\""],
+				"#A299E9" : ["#.{1,}\\Z$"]
+			}
+		},
+		"multiline_syntax" : {
+			"Python2" : ["'''", "'''", "#DE365A"]
+		}
+	},
+	"light" : {
+		"general" : {
+			"normal" : {
+				"background" : "white",
+				"foreground" : "#232323",
+				"font" : ["Verdana", 9],
+				"relief" : "flat",
+				"insertbackground" : "#232323"
+			},
+			"contrast" : {
+				"background" : "#23bc91",
+				"foreground" : "white",
+				"font" : ["Verdana", 9],
+				"relief" : "flat",
+				"activebackground" : "#119e76",
+				"activeforeground" : "white"
+			},
+			"contrast2" : {
+				"background" : "#999",
+				"foreground" : "#fafafa",
+				"font" : ["Verdana", 9],
+				"relief" : "flat",
+				"activebackground" : "#0a629b",
+				"activeforeground" : "#fafafa",
+				"bd" : 0
+			}
+		},
+		"single_line_syntax" : {
+			"Python2" :{
+				"#A1324E" : ["\\bself\\b","\\bcontinue\\b", "\\bfor\\b", "\\blambda\\b", "\\btry\\b", "\\bclass\\b", "\\bfinally\\b", "\\bis\\b", "\\breturn\\b", "\\bwhile\\b", "\\bdef\\b", "\\bfrom\\b", "\\band\\b", "\\bdel\\b", "\\bglobal\\b", "\\bnot\\b", "\\bwith\\b", "\\bas\\b", "\\belif\\b", "\\bif\\b", "\\bor\\b", "\\byield\\b", "\\bassert\\b", "\\belse\\b", "\\bimport\\b","\\bpass\\b","\\bbreak\\b","\\bexcept\\b","\\bin\\b","\\braise\\b"],
+				"#6d8e12" : ["\\bTrue\\b", "\\bFalse\\b", "\\bNone\\b", "\\bint\\b", "\\bstr\\b", "\\b(\\d)*\\b"],
+				"#37934C" : ["'.{0,}'"],
+				"#6A6FB0" : ["#.{1,}\\Z$"]
+			}
+		}
+	}
+}

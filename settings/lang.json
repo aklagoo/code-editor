@@ -1,0 +1,20 @@
+{
+	"compile" : {
+		"Python2" : [["python", "-m", "py_compile"] , ["python2", "-m", "py_compile"]],
+		"Python3" : [["python", "-m", "py_compile"] , ["python3", "-m", "py_compile"]],
+		"C" : [["gcc"]],
+		"C++" : [["g++"]],
+		"Java" : [["javac"]]
+	},
+	"execute" : {
+		"Python2" : [["python"] , ["python2"]],
+		"Python3" : [["python"] , ["python3"]],
+		"C" : [["./a.out"]],
+		"C++" : [["./a.out"]],
+		"Java" : [["java"]]
+	},
+	"error" : {
+		"Windows" : "is not recognized as an internal or external command,\r\noperable program or batch file.\r\n",
+		"Linux" : "command not found"
+	}
+}
