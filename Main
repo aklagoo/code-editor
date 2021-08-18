@@ -1,0 +1,87 @@
+import tkinter as tk
+from res.Widgets import ThemedFrame, ModifiedText
+from res.Utilities import SyntaxHighlighter, AutoTabber
+
+class Editor(ThemedFrame):
+	def __init__(self, parent, row, column):
+		#Initialization
+		super(Editor, self).__init__(parent, row, column)
+		self.grid_rowconfigure(0, weight=1)
+		self.grid_columnconfigure(0, weight=1)
+
+		#Adding text
+		self.editField = ModifiedText(self, wrap="word", tabs=('0.4c'))
+		self.editField.grid(row=0, column=0, sticky='nsew', padx=4, pady=4)
+		self.editField.set_callback(self.text_callback)
+		self.add("normal", self.editField)
+
+		#Attaching higlighter
+		self.highlighter = SyntaxHighlighter(self.editField, "Python2")
+		self.editField.bind("<KeyRelease>", self.run_utilities)
+
+		#Creating tabber
+		self.tabber = AutoTabber(self.editField)
+
+		#Adding scrollbar
+		self.scrollbar = tk.Scrollbar(self, command=self.editField.yview)
+		self.scrollbar.grid(row=0, column=1, sticky='nsew')
+		self.editField['yscrollcommand'] = self.scrollbar
+		self.add("normal", self.scrollbar)
+
+		#Displaying
+		self.show()
+
+	def text_callback(self, result, *args):
+		self.index = self.editField.index("insert")
+
+	def run_utilities(self, ev):
+		if(self.highlighter.isAlive()==False):
+			self.highlighter.run()
+		self.tabber.key(self.index, ev)
+
+class Main(ThemedFrame):
+	def __init__(self, parent, row, column):
+		#Initialization
+		super(Main, self).__init__(parent, row, column)
+		self.grid_rowconfigure(0, weight=1)
+		self.grid_columnconfigure(0, weight=1)
+
+		#Menu
+		self.menu = tk.Menu(parent)
+		parent.config(menu=self.menu)
+		
+		#File Menu: New, Open, Save, Save As
+		filemenu = tk.Menu(self.menu, tearoff=0)
+		filemenu.add_command(label="Exit", command=quit)
+		self.menu.add_cascade(label="File", menu=filemenu)
+
+		#Themes menu
+		self.thememenu = tk.Menu(self.menu, tearoff=0)
+		self.thememenu.add_command(label="light",command=lambda:print("0"))
+		self.thememenu.add_command(label="dark",command=lambda:print("1"))
+		self.menu.add_cascade(label="Themes", menu=self.thememenu)
+
+		#Language menu
+		self.langmenu = tk.Menu(self.menu, tearoff=0)
+		self.langmenu.add_command(label="C",command=lambda:print("C"))
+		self.langmenu.add_command(label="C++",command=lambda:print("C++"))
+		self.langmenu.add_command(label="java",command=lambda:print("java"))
+		self.langmenu.add_command(label="python2",command=lambda:print("python2"))
+		self.langmenu.add_command(label="python3",command=lambda:print("python3"))
+		self.menu.add_cascade(label="Language", menu=self.langmenu)
+
+		#Run menu
+		self.runmenu = tk.Menu(self.menu, tearoff=0)
+		self.runmenu.add_command(label="compiler",command=lambda:print("error=0"))
+		self.runmenu.add_command(label="execute",command=lambda:print("run=1"))
+		self.menu.add_cascade(label="Run", menu=self.runmenu)
+
+		#Add editor
+		self.editor = Editor(self, 0, 0)
+		
+		#Show App Frame
+		self.show()
+
+root = tk.Tk()
+t = Main(root, 0, 0)
+root.mainloop()
