@@ -5,6 +5,7 @@ import re
 import subprocess
 import os
 
+
 class SyntaxHighlighter(threading.Thread):
 	def __init__(self, editor, lang):
 		#Initializing the thread
@@ -21,21 +22,20 @@ class SyntaxHighlighter(threading.Thread):
 		settings = json.load(open("settings/settings.json", 'r'))
 		theme = json.load(open("settings/theme.json", 'r'))
 		self.single_line_theme = theme[settings["theme"]]["single_line_syntax"][self.lang]
-		#self.multiline_theme = theme[settings["theme"]]["multiline_syntax"][self.lang]
 		del theme
 
 	def run(self):
-		#Fetching text
+		# Fetching text
 		text = self.editor.get("1.0", tk.END)
 
-		#Splitting text into lines
+		# Splitting text into lines
 		lines = text.splitlines()
 
-		#Clear previous tags
+		# Clear previous tags
 		for tag in self.editor.tag_names():
 			self.editor.tag_delete(tag)
 
-		#SINGLE LINE HIGHLIGHTING
+		# SINGLE LINE HIGHLIGHTING
 		for color in self.single_line_theme:
 			for keyword in self.single_line_theme[color]:
 				l = 0
@@ -44,11 +44,12 @@ class SyntaxHighlighter(threading.Thread):
 					l+=1
 					matches = [[m.start(), m.end()] for m in re.finditer(re.compile(keyword), line)]
 
-					if matches!=[]:
+					if matches:
 						for position in matches:
 							start_pos = str(l)+'.'+str(position[0])
 							end_pos = str(l)+'.'+str(position[1])
 							self.editor.tag_add(color, start_pos, end_pos)
+
 
 class AutoTabber:
 	def __init__(self, editor):
